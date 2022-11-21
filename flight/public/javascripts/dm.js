@@ -5,7 +5,7 @@ function directmsg() {
     console.log('dmが来た');
     // ユーザ名を取得
     const userName = $('#userName').val();
-    //　相手のユーザ名を取得
+    // 相手のユーザ名を取得
     const otherUserName = $('#selectedUserName').val();
     // 入力されたメッセージを取得
     const dm = $('#message').val();

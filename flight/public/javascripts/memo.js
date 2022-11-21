@@ -1,5 +1,5 @@
 'use strict';
-// require('date-utils');
+//require('date-utils');
 
 // メモを画面上に表示する
 function memo() {    

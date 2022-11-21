@@ -1,88 +1,70 @@
-/**
- * 飛んで着陸するだけのテスト用プログラム
- */
+'use strict';
 
-function publish() { 
-  console.log('start')
-  var dronejs = require('dronejs');
-  
-  // あなたのMamboの名前をセットしてください。
-  var DRONE_NAME = "Mambo_778629";
- 
- /**
-  * ドローンを動かす関数を定義します
-  *
-  * 使い方:
-  *   dronejs.connect(DRONE_NAME)から初めて、.thenで処理を続けて書いていきます。
-  *   最後は.catch()でエラー処理を書いて、;を書いて処理を終了させます。
-  *
-  * コマンド:
-  *
-  *   飛行状態を変化:
-  *     離陸   : dronejs.takeOff()
-  *     安定化 : dronejs.flatTrim() : 離陸前に必ず1度呼ぶ
-  *     着陸   : dronejs.land()
-  *
-  *   移動:
-  *     前進     : dronejs.forward()   : 引数には、進む強さと回数を指定する
-  *     後退     : dronejs.backward()  : 引数には、進む強さと回数を指定する
-  *     右に進む : dronejs.right()     : 引数には、進む強さと回数を指定する
-  *     左に進む : dronejs.left()      : 引数には、進む強さと回数を指定する
-  *     上昇     : dronejs.up()        : 引数には、進む強さと回数を指定する
-  *     下降     : dronejs.down()      : 引数には、進む強さと回数を指定する
-  *     右を向く : dronejs.turnRight() : 引数には回転の強さと回数を指定する
-  *     左を向く : dronejs.turnLeft()  : 引数には回転の強さと回数を指定する
-  *
-  *   Grabberを動かす:
-  *     つかむ: dronejs.grabClose()
-  *     はなす: dronejs.grabOpen()
-  *
-  *   アクロバット:
-  *     前転     : dronejs.frontFlip()
-  *     後転     : dronejs.backFlip()
-  *     側転(右) : dronejs.rightFlip()
-  *     側転(左) : dronejs.leftFlip()
-  *
-  *   写真:
-  *     撮影         : dronejs.takePicture()
-  *     一覧を取得   : dronejs.listAllPictures()
-  *     ダウンロード : dronejs.downloadPicture()
-  *     画像を削除   : dronejs.deletePicture()
-  *
-  *   その他:
-  *     ログを出力する           : dronejs.enableLogging()  : 引数にログを出すディレクトリを指定
-  *     ドローンの状態を確認する : dronejs.checkAllStates() : ドローンの詳しい状態が送られてきます
-  *
-  */
- 
-   // ドローンの状態を受け取るイベントストリーム(rxjsのObservableオブジェクト)を取得します
-   const navDataStream = dronejs.getNavDataStream();
-   navDataStream.subscribe((data) => {
-         console.log(data);
-     },
-     e => debug(e),
-     () => debug('complete')
-   );
- 
-   // ここから処理を書いていきます
-   dronejs.connect(DRONE_NAME)
-     .then(() => dronejs.flatTrim()) // 飛ぶ前に一度平坦な状態を覚える
-     .then(() => dronejs.takeOff()) // 離陸
-     .then(() => {console.log(DRONE_NAME+' take off.');})
-     .then(() => dronejs.flatTrim())
-     .then(() => dronejs.land()) // 着陸する
-     .then(() => {console.log(DRONE_NAME+' land.');})
- 
-     .then(() => dronejs.disconnect()) // 接続解除
-     .then(() => {
-       // 正常終了した場合、プログラムを終了する
-       process.stdin.pause();
-       process.exit();
-     })
-     .catch((e) => {
-       // 以上終了した場合、エラーの内容をコンソールに表示し、終了する
-       console.log('エラー: ' + e);
-       process.stdin.pause();
-       process.exit();
-     });
+// 投稿メッセージをサーバに送信する
+function publish() {
+    // ユーザ名を取得
+    const userName = $('#userName').val();
+    // 入力されたメッセージを取得
+    const message = $('#message').val();
+
+    // 投稿時間を取得
+    var date = new Date();
+    var dateString = date.toLocaleString({ timeZone: 'Asia/Tokyo' });
+    
+    // 投稿内容を送信
+    // 空行や改行だけではないもの
+    if($.trim(message)){
+        socket.emit('sendMessageEvent', message, userName, dateString);
+        // 投稿フィールドをリセット
+        $('#message').val('');
+    }
+    console.log(userName);
+    return false;
 }
+
+// メッセージを削除する
+function trash(id){
+    // メッセージ削除を自分宛に送る id: 対象のメッセージのid
+    socket.emit('sendTrashMessage', id);
+    return true;
+}
+
+// サーバから受信した投稿メッセージを画面上に表示する
+// 他人用
+socket.on('receiveMessageEvent', function (message, userName, dateString) {
+    // 「ユーザー名さん: コメント」を画面上に表示する
+    message = message.replaceAll("\n", "<br>");
+    // "/"、":"、" "を削除
+    const id = userName + dateString.replaceAll(/["/: "]/g, "");
+    $('#thread').prepend('<div class="incoing_msg" id="' + id + '_div"><div class="received_msg"><p>' + message + '</p><span class="time_date">  '+userName+'さん  ' + dateString + '</span></div></div>');
+});
+
+// 自分用
+socket.on('selfReceiveMessageEvent', function (message, userName, dateString) {
+    // 「ユーザー名さん: コメント」を画面上に表示する
+    message = message.replaceAll("\n", "<br>");
+    // "/"、":"、" "を削除
+    const id = userName + dateString.replaceAll(/["/: "]/g, "");
+    // ボタンのidは"名前"+"日付(数字のみ)"、divのidは"ボタンのid"+"_div"
+    $('#thread').prepend('<div class="outgoing_msg" id="' + id + '_div"><button class="sent_msg_trash" type="button" value="メッセージを消す" id="' + id + '" onclick="trash(this.id);"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg></button>'+'<div class="sent_msg"><p>' + message + '</p><span class="time_date">' + dateString + '</span></div></div>');
+});
+
+socket.on('receiveTrashMessage', function (id) {
+    const remove_id = '#' + id + "_div";
+    $(remove_id).remove();
+});
+
+// メッセージでエンターキーが押されたら投稿する
+$("#message").keypress(function(e) {
+    // エンターキーのみが押されたら投稿する
+    if (e.keyCode == 13 && e.shiftKey === false) {
+        publish();
+        return false;
+    }else if(e.keyCode == 13 && e.ctrlKey=== true){
+        directmsg();
+        return false;
+    }else{
+        // shiftとenterキーが両方押されたら、普通に改行をする
+    }
+});
+

@@ -11,7 +11,7 @@ module.exports = function (socket, io) {
         //引数は使用するデータベースファイルだと思う。ここで使用されているのはhackathon/chatapp/Users.db
         const db = new sqlite3.Database("./Users.db");
 
-        // db.run("drop table if exists Users");　//データを保存するためコメントアウト。テーブルを消したければコメントアウト外す。
+        // db.run("drop table if exists Users"); //データを保存するためコメントアウト。テーブルを消したければコメントアウト外す。
         
         console.log('db.js: ' + enterUserName);
 
