@@ -1,0 +1,160 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <h1 class="title">Drone De Clean</h1>
+            <nav>
+                <ul class="main-nav">
+                    <li>
+                        <form method="post" action="/auto">
+                        <input id="userName" name="userName" type="hidden" value={{userName}}>
+                            <button type="button1" class="btn1" onclick="autoope();">
+                                自動
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form method="post" action="/self">
+                        <input id="userName" name="userName" type="hidden" value={{userName}}>
+                            <button type="button5" class="btn1" onclick="selfope();">
+                                操縦
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+            <div class="room-exit">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <button type="button" class="btn-exit" onclick="exit();">
+                    <img src="/img/logout.png" height="23" width="23">Exit
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="auto">
+        <div id="app">
+            <div>
+                <table class="wish_list">
+                    <thead>
+                        <!-- 概要 -->
+                        <tr>
+                            <th>場所</th>
+                            <th>動作</th>
+                            <th>実行</th>
+                            <th>削除</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <!-- 場所表示 -->
+                            <td>
+                                <div class="CleanPlace">
+                                    <div id="CleanPlace"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="CleanAct">
+                                    <div id="CleanAct"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="CleanStart">
+                                    <div id="CleanStart"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="CleanTrash">
+                                    <div id="CleanTrash"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ポップアップ表示 -->
+            <div class="pop-box">
+                <label for="popup-on">
+                    <!-- これを押したら開く -->
+                    <div class="btn-open">
+                        <p class="add">+ 掃除の追加</p>
+                    </div>
+                </label>
+                <!-- 開くために判断するもの（実際は見えない）-->
+                <input type="checkbox" id="popup-on">
+
+                <!--　ポップアップの内容 -->
+                <div class="popup">
+                    <!-- 閉じるボタン -->
+                    <label for="popup-on" class="icon-close">×</label>
+                    <div class="popup-content">
+                        <div>
+                            <p>掃除追加</p>
+                            <!-- viewsのcreate -->
+                            <form method="post" action="/auto">
+                            <input id="userName" name="userName" type="hidden" value={{userName}}>
+                                <table align="center" class="create_form">
+                                    <tr>
+                                        <td>
+                                            <label for="place">場所　</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="place" name="place" class="form-control">
+                                        </td>
+                                    </tr>
+                                    <tr class="actform">
+                                        <td>
+                                            <label for="details">動作　</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="act1" name="act1" class="form-control"
+                                                placeholder="動作1">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="details">　　</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="act2" name="act2" class="form-control"
+                                                placeholder="動作2">
+                                            <input type="text" id="act3" name="act3" class="form-control"
+                                                placeholder="動作3">
+                                            <input type="text" id="act4" name="act4" class="form-control"
+                                                placeholder="動作4">
+                                            <input type="text" id="act5" name="act5" class="form-control"
+                                                placeholder="動作5">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="index-enter">
+                                    <button type="button2" class="btn-enter" onclick="register();">
+                                        登録
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="actlist">
+                                <div class="ac">- 動作一覧 -</div>
+                                <ul>
+                                    <li>前</li>
+                                    <li>後ろ</li>
+                                    <li>上</li>
+                                    <li>下</li>
+                                    <li>左</li>
+                                    <li>右</li>
+                                    <li>左旋回</li>
+                                    <li>右旋回</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- /popup-content -->
+                </div><!-- /popup -->
+            </div><!-- /pop-box -->
+        </div><!-- /app -->
+    </div>
+</div>
+<script src="/javascripts/socket.js"></script>
+<script src="/javascripts/enter.js"></script>
+<script src="/javascripts/exit.js"></script>
+<script src="/javascripts/move.js"></script>
+<script src="/javascripts/register.js"></script>

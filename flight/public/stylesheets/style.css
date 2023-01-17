@@ -9,168 +9,508 @@ a {
     color: #00B7FF;
 }
 
-div {
-    margin: 20px 0px;
-}
-
-.row {
-    margin: 20px;
-}
-
 /*
  * トップ画面（index.hbs）に関する設定
  */
-.index-user_name {
 
+.container-in {
+    display: flex;
+    justify-content: center;
+    padding: 80px;
 }
 
-.index-user_name_text {
-    width: 200px;
+.wrap {
+    width: 550px;
+    padding: 80px;
+    background: #6fc5f0;
 }
 
-/* 入室ボタン */
-img {
-    margin-top: -4px;
-    margin-right: 10px;
+.wrap h1 {
+    text-align: center;
 }
 
-.index-enter{
-    margin-top: 50px;
+.create_form {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.index-enter .btn{
-    font-size: 20px;
+.index-enter {
+    text-align: center;
+}
+
+.btn-enter {
+    background-color: #ffffff;
+    color: rgb(54, 54, 54);
+    width: 150px;
+    height: 40px;
 }
 
 /*
  * チャットルーム画面（room.hbs）に関する設定
  */
 
-.navbar-nav {
-    margin-right: 2vw;
+.navbar {
+    background-color: #6fc5f0;
 }
 
-.navbar-brand {
+.title {
     margin-left: 2vw;
+    font-size: 1.7rem;
 }
 
-.room-message {
-    width: 50vw;
+.main-nav {
+    display: flex;
+    list-style: none;
 }
 
-.room-submit{
-    margin-top: 200px;
+.main-nav li {
+    margin-right: 20px;
+}
+
+.main-nav .btn1 {
+    color: rgb(255, 255, 255);
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+}
+
+.main-nav .btn1:hover {
+    color: rgb(0, 0, 0);
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.btn-exit {
+    color: rgb(255, 255, 255);
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1.3rem;
+    margin-top: -20px;
     margin-right: 2vw;
+
 }
 
-.room-submit .btn {
+.btn-exit:hover {
+    color: rgb(184, 33, 33);
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+.self {
+    margin-top: 20px;
+}
+
+.up-look {
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 150px;
     font-size: 20px;
 }
 
-.room-exit .btn{
+.side-look {
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 150px;
     font-size: 20px;
-    margin-top: 10px;
 }
 
-.time_date {
-    color: #747474;
-    display: block;
-    font-size: 12px;
-    margin: 8px 0 0;
+#btn-turnLeft {
+    margin-right: 350px;
+    z-index: 1;
 }
 
-/*送る方*/
-/* 投稿 */
-.outgoing_msg{ 
-    overflow:hidden; 
-    margin:10px 0 10px;
+.turn {
+    margin-bottom: -70px;
+    position: relative;
+    z-index: 1;
 }
-.sent_msg {
-    float: right;
-    width: 46%;
-    margin: 5px;
+
+ul.sample1 {
+    padding: 0;
+    font: 14px/1.6 'arial narrow', sans-serif;
+    list-style: none;
+    margin-top: 30px;
 }
-.sent_msg p {
-    background: #05728f none repeat scroll 0 0;
+
+ul.sample1 li {
+    position: relative;
+    padding: 0.5em 1em 0.5em 2.3em;
+    margin-bottom: 5px;
+    color: #6fc5f0;
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(129, 194, 250, 0.5);
+}
+
+ul.sample1 li:after,
+ul.sample1 li:before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+
+ul.sample1 li:before {
+    left: 0.2em;
+    width: 17px;
+    height: 17px;
+    background: rgba(129, 194, 250, 0.5);
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+ul.sample1 li:after {
+    top: 1.1em;
+    left: 0.7em;
+    width: 14px;
+    height: 14px;
+    background: rgba(129, 194, 250, 0.3);
+}
+
+ul.sample1 p {
+    margin-left: 35px;
+}
+
+.attention h1 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+
+/* ToDoリスト */
+.wish_list {
+    min-width: 700px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
     border-radius: 3px;
-    font-size: 14px;
-    margin: 0; color:#fff;
-    padding: 5px 10px 5px 12px;
-    width:100%;
-}
-.sent_msg_trash {
-
+    border: 1px #ddd solid;
+    border-spacing: 0;
+    text-align: center;
 }
 
-/* dm */
-.outgoing_dm{ 
-    overflow:hidden; 
-    margin:10px 0 10px;
-}
-.sent_dm {
-    float: right;
-    width: 46%;
-    margin: 5px;
-}
-.sent_dm p {
-    background: #05728f none repeat scroll 0 0;
-    border-radius: 3px;
-    font-size: 14px;
-    margin: 0; color:#fff;
-    padding: 5px 10px 5px 12px;
-    width:100%;
+.wish_list thead {
+    background-color: #4481a0;
+    color: #fff;
 }
 
-/*受け取る方*/
-.incoing_msg {
-    overflow:hidden; 
-    margin:10px 0 10px;
+.wish_list th {
+    margin-bottom: 9px;
+    padding: 13px 2px;
+    border-left: 1px #8f8f8f solid;
+    font-weight: normal;
 }
-.received_msg {
+
+.wish_list th:first-child {
+    border-left-width: 0;
+}
+
+.wish_list tbody {
+    vertical-align: top;
+}
+
+.wish_list tbody td {
+    border-left: 1px #ddd solid;
+}
+
+.wish_list tbody td:first-child {
+    border-left-width: 0;
+}
+
+.wish_list_mobile {
+    display: none;
+}
+
+.wish_list th,
+.wish_list td {
+    display: table-cell;
+}
+
+.wish_list td:before {
+    display: none;
+}
+
+.wish_list tr:nth-child(even) {
+    background-color: #eaeaea;
+}
+
+.wish_list td {
+    padding: 9px 15px;
+}
+
+.wish_list td:before {
+    display: none;
+}
+
+/* ToDo追加ボタン */
+.add {
+    font-weight: bold;
     float: left;
-    width: 46%;
-    margin: 5px;
 }
-.received_msg p {
-    background: #9eda76 none repeat scroll 0 0;
-    border-radius: 3px;
-    color: #646464;
-    font-size: 14px;
-    margin: 0;
-    padding: 5px 10px 5px 12px;
-    width: 100%;
+
+.add:hover {
+    color: #607AA7;
+}
+
+/* pop up*/
+
+/* ポップアップウインドウの設定 */
+.popup {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 9999px rgba(99, 99, 99, 0.753);
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    max-width: 100vw;
+    width: 500px;
+    height: 450px;
+    margin: -185px 0 0 -260px;
+    padding: 1.3rem 4rem;
+    overflow-y: scroll;
+    z-index: 10;
+}
+
+/* チェックボックスの初期設定 */
+#popup-on {
+    display: none;
+}
+
+/* チェックされたらポップアップウインドウを開く */
+#popup-on:checked+.popup {
+    display: block;
 }
 
 
-/* 入室 */
-.enter_comment {
-    opacity: 0.5;
-    text-align:center;
+/* 閉じるアイコン（右上） */
+.icon-close {
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    cursor: pointer;
 }
 
-/* 退室 */
-.exit_comment {
-    opacity: 0.5;
-    text-align:center;
+/* 開くボタン */
+.btn-open {
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* チャット画面の背景 */
-.room-thread {
-    background: #b8f0ba;
-    border-radius: 40px 40px 40px 40px;
+/* ポップアップの内容 */
+.popup-content {
+    margin: 20px auto 20px auto;
+    width: 95%;
 }
 
-/* 全てのボタン */
-.btn {
-    border-radius: 40px 40px 40px 40px;
+.popup-content .create_form {
+    margin-left: -30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-/* ユーザーボタン */
-.btn-dm{
+.actlist {
+    margin-left: 250px;
+    margin-top: -300px;
+}
+
+.actlist .ac{
+    font-weight: bold;
+
+}
+
+.actlist li::before{
+    position: relative;
+  top: -2px;
+  left: -18px;
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  content: '';
+  border-radius: 100%;
+  background: #607AA7;
+}
+
+/* ToDo追加の文字 */
+.popup-content p {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #607AA7;
+    margin-top: -10px;
+    margin-bottom: 35px;
+}
+
+/*　入力情報全体 */
+.add_content {
+    margin-left: 15%;
     margin-bottom: 5px;
 }
 
-.btn-dm.Active{
-    background-color: #0DCAF0;
-    color: #000;
+/*　テキストフォームの大きさ、スペース調整 */
+.detail {
+    margin-bottom: 5px;
+    width: 250px;
+    height: 20px;
 }
+
+#location {
+    margin-bottom: 10px;
+}
+
+.CleanPlace {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
+
+.CleanAct {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
+
+.CleanTrash {
+    font-size: 19px;
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
+
+.CleanStart {
+    font-size: 15px;
+    margin-top: 8px;
+    margin-bottom: -15px;
+}
+
+.sent_trash {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.sent_start {
+    margin-top: 2px;
+    margin-bottom: 3px;
+    text-decoration: none;
+    color: #9b9b9b;
+    font-size: 10px;
+    border-radius: 5px;
+    width: 60px;
+    height: 32px;
+    transition: 0.3s;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.sent_start:hover {
+    transform: translateY(2px);
+    box-shadow: 0 0 rgba(0, 0, 0, 0);
+}
+
+.sent_start:after {
+    content: "";
+    display: block;
+    margin-left: 18px;
+    border-style: solid;
+    border-color: transparent transparent transparent #607AA7;
+    border-width: 5px 0 5px 10px;
+}
+
+.sent_msg_trash{
+    border: none;
+  outline: none;
+  background: transparent;
+}
+  
+  .btn5{
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.5;
+    position: relative;
+    display: inline-block;
+    padding: 5px 2rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    color: #212529;
+    border-radius: 0.5rem;
+    border: none;
+  outline: none;
+  }
+  
+  .btn-radius-gradient-wrap {
+    display: inline-block;
+  
+    padding: 0.5rem;
+  
+    border-radius: 100vh;
+    background: #f2f5f6;
+    background: -webkit-linear-gradient(
+      to top,
+      #f2f5f6 0%,
+      #e3eaed 37%,
+      #96a1a5 100%
+    );
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#f2f5f6),
+      color-stop(37%, #e3eaed),
+      to(#96a1a5)
+    );
+    background: -webkit-linear-gradient(
+      top,
+      #f2f5f6 0%,
+      #e3eaed 37%,
+      #96a1a5 100%
+    );
+    background: linear-gradient(to bottom, #f2f5f6 0%, #e3eaed 37%, #96a1a5 100%);
+  
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f5f6', endColorstr='#96a1a5', GradientType=0);
+  }
+  
+  .btn-radius-gradient {
+    border-radius: 100vh;
+    background: #e3eaed;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#e3eaed),
+      to(#f2f5f6)
+    );
+    background: -webkit-linear-gradient(top, #e3eaed 0%, #f2f5f6 100%);
+    background: linear-gradient(to bottom, #e3eaed 0%, #f2f5f6 100%);
+  
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e3eaed', endColorstr='#f2f5f6', GradientType=0);
+  }
+  
+  .btn-radius-gradient:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+
+  

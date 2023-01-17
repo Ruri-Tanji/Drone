@@ -16,5 +16,7 @@ module.exports = function (server) {
 
         require('./flight')(socket, io);
 
+        require('./register')(socket, io);
+
     });
 };

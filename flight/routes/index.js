@@ -15,4 +15,15 @@ router.post('/room', function(request, response, next) {
     
 });
 
+router.post('/auto', function(request, response, next) {
+    console.log('ユーザ名：' + request.body.userName);    
+    response.render('auto', {userName: request.body.userName});
+});
+
+router.post('/self', function(request, response, next) {
+    console.log('ユーザ名：' + request.body.userName);    
+    response.render('self', {userName: request.body.userName});
+    
+});
+
 module.exports = router;

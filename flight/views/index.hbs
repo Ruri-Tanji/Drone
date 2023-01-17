@@ -1,18 +1,30 @@
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #006633;">
-        <div class="container-fluid">
-            <h1 class="navbar-brand">ドローン掃除</h1>
-        </div>
-    </nav>
-    <div class="row">
+<div class="container-in">
+    <div class="wrap">
+        <h1>Drone De Clean</h1>
         <form method="post" action="/room">
-            <div class="form-group">
-                Name
-                <input type="text" id="userName" name="userName" class="form-control">
-            </div>
+            <table align="center" class="create_form">
+                <tr>
+                    <td>
+                        <label for="userid">ユーザー名　</label>
+                    </td>
+                    <td>
+                        <input type="text" id="userName" name="userName" class="form-control">
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <label for="userid">パスワード　</label>
+                    </td>
+                    <td>
+                        <input type="text" id="userPassword" name="userPassword" class="form-control">
+                    </td>
+                </tr>
+            </table>
+
             <div class="index-enter">
-                <button type="button" class="btn btn-success" onclick="enter();">
-                    <img src="/img/login.png" height="23" width="23">ログイン
+                <button type="button" class="btn-enter" onclick="enter();">
+                    ログイン
                 </button>
             </div>
         </form>
@@ -20,6 +32,5 @@
 </div>
 
 <script src="/javascripts/socket.js"></script>
-<script src="/javascripts/index.js"></script>
 <script src="/javascripts/enter.js"></script>
-
+<script src="/javascripts/register.js"></script>

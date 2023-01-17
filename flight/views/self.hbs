@@ -1,0 +1,116 @@
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <h1 class="title">Drone De Clean</h1>
+            <nav>
+                <ul class="main-nav">
+                    <li>
+                        <form method="post" action="/auto">
+                        <input id="userName" name="userName" type="hidden" value={{userName}}>
+                            <button type="button1" class="btn1" onclick="autoope();">
+                                自動
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form method="post" action="/self">
+                        <input id="userName" name="userName" type="hidden" value={{userName}}>
+                            <button type="button" class="btn1" onclick="selfope();">
+                                操縦
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+            <div class="room-exit">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <button type="button" class="btn-exit" onclick="exit();">
+                    <img src="/img/logout.png" height="23" width="23">Exit
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div class="self">
+        <input id="userName" type="hidden" value={{userName}}>
+        <button type="button" class="btn-self" onclick="connect();">
+            接続
+        </button>
+        <button type="button" class="btn-self" onclick="takeoff();">
+            離陸
+        </button>
+        <button type="button" class="btn-self" onclick="land();">
+            着陸
+        </button>
+        <div class="up-look">
+            <div class="btn-radius-gradient-wrap">
+            <button type="button" class="btn5 btn-radius-gradient" onclick="forward();">
+                <img src="/img/forward.png" height="35" width="35">前進
+            </button>
+            </div>
+            <br>
+            <div class="turn">
+                <div class="btn-radius-gradient-wrap" id="btn-turnLeft" >
+                <button type="button" class="btn5 btn-radius-gradient" onclick="turnLeft();">
+                    左旋回<img src="/img/turnLeft.png" height="30" width="30">
+                </button>
+                </div>
+                <div class="btn-radius-gradient-wrap">
+                <button type="button" class="btn5 btn-radius-gradient" onclick="turnRight();">
+                    <img src="/img/turnRight.png" height="30" width="30">右旋回
+                </button>
+                </div>
+            </div>
+            <br>
+            <div class="btn-radius-gradient-wrap">
+            <button type="button" class="btn5 btn-radius-gradient" onclick="left();">
+                左<img src="/img/left.png" height="30" width="30">
+            </button>
+            </div>
+            <img src="/img/up_look.png" height="400" width="400">
+            <div class="btn-radius-gradient-wrap">
+            <button type="button" class="btn5 btn-radius-gradient" onclick="right();">
+                <img src="/img/right.png" height="30" width="30">右
+            </button>
+            </div>
+            <br>
+            <div class="btn-radius-gradient-wrap">
+            <button type="button" class="btn5 btn-radius-gradient" onclick="backward();">
+                <img src="/img/back.png" height="35" width="35">後退
+            </button>
+            </div>
+        </div>
+        <div class="side-look">
+            <div class="btn-radius-gradient-wrap">
+            <button type="button" class="btn5 btn-radius-gradient" onclick="up();">
+                <img src="/img/up.png" height="30" width="30">上昇
+            </button>
+            </div>
+            <br>
+            <div class="btn-radius-gradient-wrap">
+            <button type="button" class="btn5 btn-radius-gradient" onclick="left();">
+                左<img src="/img/left.png" height="30" width="30">
+            </button>
+            </div>
+
+            <img src="/img/side.png" height="100" width="400">
+            <div class="btn-radius-gradient-wrap">
+            <button type="button" class="btn5 btn-radius-gradient" onclick="right();">
+                <img src="/img/right.png" height="30" width="30">右
+            </button>
+            </div>
+            <br>
+            <div class="btn-radius-gradient-wrap">
+            <button type="button" class="btn5 btn-radius-gradient" onclick="down();">
+                <img src="/img/down.png" height="30" width="30">下降
+            </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <script src="/javascripts/socket.js"></script>
+    <script src="/javascripts/enter.js"></script>
+    <script src="/javascripts/exit.js"></script>
+    <script src="/javascripts/flight.js"></script>
+    <script src="/javascripts/move.js"></script>

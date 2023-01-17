@@ -1,83 +1,45 @@
 'use strict';
-
+//接続
 function connect() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendconnect', userName);
+    socket.emit('sendconnect');
 }
-
-socket.on('receiveconnect', function (Name) {
-    console.log('準備完了' + Name);
-});
-
+//離陸
 function takeoff() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendtakeoff', userName);
+    socket.emit('sendtakeoff');
 }
-
+//着陸
 function land() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendland', userName);
+    socket.emit('sendland');
 }
-
+//前進
 function forward() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendforward', userName);
+    socket.emit('sendforward');
 }
-
-
+//後退
 function backward() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendbackward', userName);
+    socket.emit('sendbackward');
 }
-
+//上昇
 function up() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendup', userName);
+    socket.emit('sendup');
 }
-
+//下降
 function down() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('senddown', userName);
+    socket.emit('senddown');
 }
-
+//右旋回
 function turnRight() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendturnRight', userName);
+    socket.emit('sendturnRight');
 }
-
+//左旋回
 function turnLeft() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendturnLeft', userName);
+    socket.emit('sendturnLeft');
 }
-
+//右
 function right() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendright', userName);
+    socket.emit('sendright');
 }
-
+//左
 function left() {
-    // ユーザ名を取得
-    const userName = $('#userName').val();
-    // 入力されたメッセージを取得
-    socket.emit('sendleft', userName);
+    socket.emit('sendleft');
 }

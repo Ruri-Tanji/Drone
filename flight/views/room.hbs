@@ -1,57 +1,61 @@
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #006633;">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
-            <h1 class="navbar-brand">楽楽会議</h1>
-            <div class="navbar-nav">
-                <p class="text-white">自分のユーザー名 "{{userName}}"</p>
+            <h1 class="title">Drone De Clean</h1>
+            <nav>
+                <ul class="main-nav">
+                    <li>
+                        <form method="post" action="/auto">
+                        <input id="userName" name="userName" type="hidden" value={{userName}}>
+                            <button type="button1" class="btn1" onclick="autoope();">
+                                自動
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form method="post" action="/self">
+                        <input id="userName" name="userName" type="hidden" value={{userName}}>
+                            <button type="button" class="btn1" onclick="selfope();">
+                                操縦
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+            <div class="room-exit">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <button type="button" class="btn-exit" onclick="exit();">
+                    <img src="/img/logout.png" height="23" width="23">Exit
+                </button>
             </div>
         </div>
     </nav>
-    <div class="room-submit">
-        <input id="userName" type="hidden" value={{userName}}>
-        <button type="button" class="btn btn-success" onclick="connect();">
-            <img src="/img/publish.png" height="23" width="23">接続
-        </button>
-        <button type="button" class="btn btn-success" onclick="takeoff();">
-            <img src="/img/publish.png" height="23" width="23">離陸
-        </button>
-        <button type="button" class="btn btn-success" onclick="land();">
-            <img src="/img/publish.png" height="23" width="23">着陸
-        </button>
-        <button type="button" class="btn btn-success" onclick="forward();">
-            <img src="/img/publish.png" height="23" width="23">前進
-        </button>
-        <button type="button" class="btn btn-success" onclick="backward();">
-            <img src="/img/publish.png" height="23" width="23">後退
-        </button>
-        <button type="button" class="btn btn-success" onclick="up();">
-            <img src="/img/publish.png" height="23" width="23">上昇
-        </button>
-        <button type="button" class="btn btn-success" onclick="down();">
-            <img src="/img/publish.png" height="23" width="23">下降
-        </button>
-        <button type="button" class="btn btn-success" onclick="turnRight();">
-            <img src="/img/publish.png" height="23" width="23">右旋回
-        </button>
-        <button type="button" class="btn btn-success" onclick="turnLeft();">
-            <img src="/img/publish.png" height="23" width="23">左旋回
-        </button>
-        <button type="button" class="btn btn-success" onclick="right();">
-            <img src="/img/publish.png" height="23" width="23">右
-        </button>
-        <button type="button" class="btn btn-success" onclick="left();">
-            <img src="/img/publish.png" height="23" width="23">左
-        </button>
-
-        <div class="room-exit">
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            <button type="button" class="btn btn-danger" onclick="exit();">
-                <img src="/img/logout.png" height="23" width="23">退室する
-            </button>
-        </div>
+    <div class="attention">
+        <h1>利用上の注意</h1>
+        <p>
+            　今回使用するドローン(Prrot「Mambo」)は総重量が100g未満であり航空法の規制対象外であるため、気軽に使用することが可能です。
+            <br>
+            　ですが、操縦を誤ればドローンは思わぬところに飛んで行き、人にけがをさせたり、物を破損したりする危険もあります。
+            また、使用する場所においても人がドローンのすぐ近くにいない事も確認はもちろん、飛行が禁止されている場所などにも注意しましょう。
+            <br>
+            　なお、日本語のユーザーズガイドには、14歳未満は操作してはいけないと書かれてあり、利用時は年齢と安全に配慮して行ってください。
+        </p>
+        <ul class="sample1">
+            <li>小型無人機等飛行禁止法の規制</li>
+                <p>国会議事堂や皇居、官邸などの国の重要施設の上空と周辺地域は飛行禁止です。</p>
+            <li>文化財保護法の規制</li>
+                <p>国の重要文化財周辺はドローンの飛行を禁止している場合があります。</p>
+            <li>道路交通法</li>
+                <p>道路交通法では、公道での通行の妨げになる行為を禁止しており、認可申請が定められています。上空を飛行すること自体はこれに当たりませんが、低空飛行や公道での離着陸は「通行の妨げ」になると見なされる可能性があります。</p>
+            <li>各自治体による条例の規制</li>
+                <p>都道府県ごとに定めている条例の中でドローンが規制されていることがあります。例えば公園条例で、禁止されている公園内での危険行為としてドローンの飛行が含まれていると、自治体が管理している公園でのドローン飛行はできません。</p>
+            <li>民法</li>
+                <p>敷地内上空を無許可で飛行することは所有権の侵害に当たります。</p>
+        </ul>
     </div>
+</div>
 
-    <script src="/javascripts/socket.js"></script>
-    <script src="/javascripts/enter.js"></script>
-    <script src="/javascripts/exit.js"></script>
-    <script src="/javascripts/flight.js"></script>
+<script src="/javascripts/socket.js"></script>
+<script src="/javascripts/enter.js"></script>
+<script src="/javascripts/exit.js"></script>
+<script src="/javascripts/move.js"></script>
