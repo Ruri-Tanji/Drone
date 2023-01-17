@@ -2,11 +2,6 @@
 
 ドローンを用いて手の届かないところの掃除を行います
 
-実行
-cd Drone
-cd flight
-npm start
-
 ## 内容
 
 + 環境構築
@@ -18,7 +13,7 @@ npm start
 
 [こちら](https://nodejs.org/ja/)などからインストーラをダウンロードしてインストールする
 
-### windows-build-tools のインストール
+### windows-build-toolsのインストール
 
 + Python2.7などNode.jsのライブラリに必要なものを全て用意してくれるコマンド
 
@@ -41,6 +36,7 @@ npm -g config delete proxy
 npm -g config delete https-proxy
 npm -g config delete registry
 ```
+プロキシ設定・削除後、再度windows-build-toolsのインストールを行う
 
 ### node-rolling-spider のインストール
 
@@ -62,8 +58,8 @@ npm install bluetooth-hci-socket
 ### Bluetooth アダプタの設定
 
 + Bluetoothアダプタ（node-blutooth-hci-socket モジュールに適合するもの）をパソコンのUSBポートにさす
-+ [Zadigというドライバ書き換えツール](https://zadig.akeo.ie/)をダウンロード
-+ Zadigを用いてBluetoothアダプタをWinUSBに変更する
++ [Zadig](https://zadig.akeo.ie/)というドライバ書き換えツールをダウンロード
++ BluetoothアダプタをWinUSBに変更する
 
 ## Webアプリ起動
 
